@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import PriorityItem from "./PriorityItem";
-import en from "../lib/en";
 import { priorities } from "../lib/generateResults";
 import { Button } from "semantic-ui-react";
+import getStrings from "../lib/currentPriority";
 
 interface Props {
   validInputs: Inputs;
@@ -10,17 +10,44 @@ interface Props {
   results: Results;
 }
 
-const ResultsRoute: FC<Props> = ({ validInputs, handleEditMode, results }) => {
-  console.log("results are", results);
+const ResultsRoute: FC<Props> = ({ handleEditMode, results }) => {
+  const strings = getStrings(results);
+  const currentPriority = strings[results.firstPriority.id];
   return (
     <div>
-      inputs:
-      <p>{JSON.stringify(validInputs)}</p>
-      results:
-      {priorities.map(id => {
-        return <PriorityItem text={en[id].title} {...results[id]} />;
-      })}
-      <Button onClick={handleEditMode}>EDIT INPUTS</Button>
+      <Button style={{ margin: 8 }} onClick={handleEditMode}>
+        EDIT INPUTS
+      </Button>
+      <div className="firstPriority">
+        <h5>Your current priority:</h5>
+        <h3>{currentPriority.title}</h3>
+        <p>{currentPriority.motivation}</p>
+      </div>
+
+      <div style={{ margin: 16 }}>
+        {priorities.map(id => {
+          return (
+            <PriorityItem
+              text={strings[id].title}
+              {...results[id]}
+              firstPriority={results.firstPriority}
+              key={id}
+            />
+          );
+        })}
+      </div>
+      <style jsx>
+        {`
+          .firstPriority {
+            border: 1px solid black;
+            border-radius: 16px;
+            padding: 16px;
+          }
+          h3 {
+            margin-top: 0px;
+          }
+        `}
+      </style>
     </div>
   );
 };

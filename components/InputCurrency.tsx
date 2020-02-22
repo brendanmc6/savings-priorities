@@ -23,7 +23,7 @@ const InputCurrency: FC<Props> = ({
         labelPosition="left"
         type="number"
         placeholder={placeholder || "Amount"}
-        style={{ width: "100%", marginBottom: 8 }}
+        style={{ width: "100%", marginBottom: 8, maxWidth: 250 }}
         onChange={onChange}
         error={isRequired && value === 0}
       >

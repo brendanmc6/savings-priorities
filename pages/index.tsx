@@ -38,7 +38,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
@@ -62,8 +62,10 @@ const Home = () => {
       </div>
 
       <style jsx>{`
-        .container {
+        .mainContainer {
           padding: 8px;
+          max-width: 800px;
+          margin: 0px auto 64px auto;
         }
       `}</style>
     </div>
