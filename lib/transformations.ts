@@ -55,7 +55,7 @@ const transformations: Data = {
       targetValue,
       remainingIncome,
       remainingSavings: prev.remainingSavings,
-      complete: remainingIncome >= 0,
+      complete: !targetValue || remainingIncome >= 0,
       monthly: true
     };
   },
@@ -64,8 +64,8 @@ const transformations: Data = {
       return val.rate >= HIGH_INTEREST ? acc + val.principal : acc;
     }, 0);
     const remainingSavings = prev.remainingSavings - targetValue;
-    const complete = remainingSavings >= 0;
-    const remainingIncome = complete ? prev.remainingIncome : 0;
+    const complete = !targetValue || remainingSavings >= 0;
+    const remainingIncome = prev.remainingIncome;
     return {
       targetValue,
       remainingIncome,
@@ -94,7 +94,16 @@ const transformations: Data = {
       targetValue,
       remainingIncome: prev.remainingIncome,
       remainingSavings,
-      complete: remainingSavings >= 0,
+      complete: !targetValue || remainingSavings >= 0,
+      monthly: false
+    };
+  },
+  largePurchases(i, prev) {
+    return {
+      targetValue: 0,
+      remainingIncome: prev.remainingIncome,
+      remainingSavings: prev.remainingSavings,
+      complete: false,
       monthly: false
     };
   }

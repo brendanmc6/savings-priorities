@@ -19,7 +19,8 @@ type Priority =
   | "employerMatch"
   | "highInterestDebt"
   | "largeEmergencyFund"
-  | "moderateInterestDebt";
+  | "moderateInterestDebt"
+  | "largePurchases";
 
 interface PriorityObject {
   complete: boolean;
@@ -35,10 +36,12 @@ type WithAllObjects = {
 type ExtraData = {
   remainingIncome: number;
   remainingSavings: number;
-  firstPriority?: {
+  firstPriority: {
     id: Priority;
     currentValue: number;
     targetValue: number;
+    remainingIncome: number;
+    remainingSavings: number;
   };
 };
 

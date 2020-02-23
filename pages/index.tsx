@@ -19,12 +19,14 @@ const Home = () => {
 
   const handleSubmitForm = () => {
     setInputs(inputs);
-    setResults(generateResults(inputs));
+    const results = generateResults(inputs);
+    console.log("results are", results);
+    setResults(results);
     setRoute("RESULTS");
+    window.scrollTo(0, 0);
   };
 
   const handleNewInputs = async (i: Inputs) => {
-    console.log("got new inputs", i);
     setInputs(i);
     window.localStorage.setItem("inputs", JSON.stringify(i));
   };
@@ -32,7 +34,6 @@ const Home = () => {
   useEffect(() => {
     const data = window.localStorage.getItem("inputs");
     if (data) {
-      console.log("fetched data", data);
       setInputs(JSON.parse(data));
     }
   }, []);

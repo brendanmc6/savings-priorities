@@ -137,6 +137,11 @@ const DataInputForm: FC<Props> = ({ handleSubmit, onNewInputs, inputs }) => {
         Enter your monthly income, expenses and savings to see your prioritized
         savings plan!
       </p>
+      <p>
+        We don't store your data or use any analytics trackers-- all inputs are
+        kept in the browser-- and it's open source! Please contribute code or
+        ideas on github
+      </p>
       <h3>1. What is your monthly net income?</h3>
       <p>The amount paid into your bank account each month.</p>
       <InputCurrency

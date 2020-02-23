@@ -10,26 +10,34 @@ interface CashTotalProps {
   firstPriority: Results["firstPriority"];
   isFirstPriority: boolean;
   targetValue: number;
+  monthly: boolean;
 }
 
 const CashTotal: FC<CashTotalProps> = ({
   isFirstPriority,
   firstPriority,
-  targetValue
+  targetValue,
+  monthly
 }) => {
-  if (isFirstPriority) {
+  if (isFirstPriority)
     return (
       <p style={{ margin: "0px 8px 0px 0px", textAlign: "end" }}>
         <b>
-          {formatCurrency(firstPriority.currentValue)} /{" "}
-          {formatCurrency(firstPriority.targetValue)}
+          {formatCurrency(firstPriority.currentValue)}
+          {firstPriority.targetValue > 0 &&
+            "of " + formatCurrency(firstPriority.targetValue)}
         </b>
+        {monthly && "/mo"}
       </p>
     );
-  }
+
+  if (targetValue === 0)
+    return <p style={{ margin: "0px 8px 0px 0px", textAlign: "end" }}>-</p>;
+
   return (
     <p style={{ margin: "0px 8px 0px 0px", textAlign: "end" }}>
       {formatCurrency(targetValue)}
+      {monthly && "/mo"}
     </p>
   );
 };
@@ -61,6 +69,7 @@ const PriorityItem: FC<Props> = ({
             firstPriority={firstPriority}
             isFirstPriority={isFirstPriority}
             targetValue={targetValue}
+            monthly={monthly}
           />
         )}
         {isFirstPriority ? (
@@ -81,6 +90,9 @@ const PriorityItem: FC<Props> = ({
         .cashAndIcon {
           display: flex;
           align-items: center;
+        }
+        p {
+          margin-bottom: 0px;
         }
       `}</style>
     </div>

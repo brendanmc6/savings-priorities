@@ -2,7 +2,6 @@ import transformations from "./transformations";
 
 type GenerateResults = (i: Inputs) => Results;
 
-// in order
 export const priorities: Priority[] = [
   "expensesEssential",
   "minimumDebtPayments",
@@ -10,24 +9,31 @@ export const priorities: Priority[] = [
   "highInterestDebt",
   "employerMatch",
   "largeEmergencyFund",
-  "moderateInterestDebt"
+  "moderateInterestDebt",
+  "largePurchases"
 ];
 
+/**
+ * Iterate over each of the above priorities in order.
+ * For each priority, apply the relevant transformation then continue on to the next.
+ * Return a large object which has all the info needed for the UI.
+ */
 export const generateResults: GenerateResults = inputs => {
   const init = {
     remainingIncome: inputs.income,
     remainingSavings: inputs.savings
   } as Results;
 
-  const results = priorities.reduce((prev, id) => {
-    const calculate = transformations[id];
+  return priorities.reduce((prev, id) => {
+    const transform = transformations[id];
     const {
       remainingIncome,
       remainingSavings,
       targetValue,
       complete,
       monthly
-    } = calculate(inputs, prev);
+    } = transform(inputs, prev);
+    // the priority is the first item which has not yet been completed.
     const isFirstPriority = !complete && !prev.firstPriority;
     const obj: PriorityObject = {
       // define PriorityObject here for type safety
@@ -38,26 +44,26 @@ export const generateResults: GenerateResults = inputs => {
     };
     let result: Results = {
       ...prev,
-      remainingIncome,
+      remainingIncome, // passed on and used for the next transformation in the list
       remainingSavings,
       [id]: obj
     };
     if (isFirstPriority) {
+      /*
+      Save the first priority in it's own object, including the income and savings at that point.
+      */
       result.firstPriority = {
         id,
         targetValue,
+        remainingIncome,
+        remainingSavings,
         currentValue: monthly
           ? targetValue + remainingIncome
           : targetValue + remainingSavings
       };
     }
-    console.log(`${id}`, result);
-
     return result;
   }, init);
-
-  console.log("results", results);
-  return results;
 };
 
 export default generateResults;
