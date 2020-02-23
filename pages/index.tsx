@@ -20,7 +20,6 @@ const Home = () => {
   const handleSubmitForm = () => {
     setInputs(inputs);
     const results = generateResults(inputs);
-    console.log("results are", results);
     setResults(results);
     setRoute("RESULTS");
     window.scrollTo(0, 0);
