@@ -1,6 +1,8 @@
 # savings-priorities
 
-A simplified calculator based on the savings priorities flowchart from [/r/PersonalFinance](https://www.reddit.com/r/personalfinance/comments/4gdlu9/how_to_prioritize_spending_your_money_a_flowchart/)
+[savings-priorities.now.sh](https://savings-priorities.now.sh/)
+
+A simple calculator based on the savings priorities flowchart from [/r/PersonalFinance](https://www.reddit.com/r/personalfinance/comments/4gdlu9/how_to_prioritize_spending_your_money_a_flowchart/)
 
 # Contribution Guide
 
