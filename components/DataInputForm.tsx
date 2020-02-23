@@ -130,17 +130,20 @@ const DataInputForm: FC<Props> = ({ handleSubmit, onNewInputs, inputs }) => {
       <h1>Savings Priorities</h1>
       <p>
         This simple savings planner will help you allocate your future paychecks
-        in the most effective way. It’s inspired by the popular flowchart from
-        /r/PersonalFinance
+        in the most effective way. It’s inspired by the popular flowchart from{" "}
+        <a href="https://www.reddit.com/r/personalfinance/comments/4gdlu9/how_to_prioritize_spending_your_money_a_flowchart/">
+          /r/PersonalFinance
+        </a>
       </p>
       <p>
         Enter your monthly income, expenses and savings to see your prioritized
         savings plan!
       </p>
       <p>
-        We don't store your data or use any analytics trackers-- all inputs are
-        kept in the browser-- and it's open source! Please contribute code or
-        ideas on github
+        We don't store your data or use any analytics trackers. All inputs are
+        kept in the browser. And it's open source! Please contribute code or
+        ideas on{" "}
+        <a href="https://github.com/brendanmc6/savings-priorities/">github</a>
       </p>
       <h3>1. What is your monthly net income?</h3>
       <p>The amount paid into your bank account each month.</p>
