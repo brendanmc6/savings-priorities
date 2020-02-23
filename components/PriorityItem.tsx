@@ -25,7 +25,7 @@ const CashTotal: FC<CashTotalProps> = ({
         <b>
           {formatCurrency(firstPriority.currentValue)}
           {firstPriority.targetValue > 0 &&
-            "of " + formatCurrency(firstPriority.targetValue)}
+            " of " + formatCurrency(firstPriority.targetValue)}
         </b>
         {monthly && "/mo"}
       </p>
