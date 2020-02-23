@@ -1,5 +1,5 @@
 {
-  "name": "moneypots",
+  "name": "savings-priorities",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,17 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
-    "@material-ui/core": "^4.9.2",
+    "@material-ui/core": "^4.9.4",
     "@material-ui/icons": "^4.9.1",
-    "next": "^9.2.1",
+    "next": "^9.2.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2"
   },
   "devDependencies": {
-    "@types/node": "^13.7.1",
-    "@types/react": "^16.9.19",
-    "typescript": "^3.7.5"
+    "@types/node": "^13.7.4",
+    "@types/react": "^16.9.22",
+    "typescript": "^3.8.2"
   }
 }
